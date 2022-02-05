@@ -118,14 +118,14 @@ namespace Exercise.SpecificationSample
 
             var LinqExpressionElapsedMillisecondsSet = new List<double>();
             var ObjectOrientedElapsedMillisecondsSet = new List<double>();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 10; i++)
             {
                 LinqExpressionElapsedMillisecondsSet.Add(Benchmark_LinqExpression(campaigns));
                 ObjectOrientedElapsedMillisecondsSet.Add(Benchmark_ObjectOriented(campaigns));
             }
 
-            Console.WriteLine($" -> Benchmark LinqExpression Mem: {(long)(LinqExpressionElapsedMillisecondsSet.Sum() / LinqExpressionElapsedMillisecondsSet.Count)} Milliseconds");
-            Console.WriteLine($" -> Benchmark ObjectOriented Mem: {(long)(ObjectOrientedElapsedMillisecondsSet.Sum() / ObjectOrientedElapsedMillisecondsSet.Count)} Milliseconds");
+            Console.WriteLine($" -> Benchmark LinqExpression Mem: {LinqExpressionElapsedMillisecondsSet.Sum() / LinqExpressionElapsedMillisecondsSet.Count:N2} Milliseconds");
+            Console.WriteLine($" -> Benchmark ObjectOriented Mem: {ObjectOrientedElapsedMillisecondsSet.Sum() / ObjectOrientedElapsedMillisecondsSet.Count:N2} Milliseconds");
 
             Console.WriteLine("\r\n");
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,17 +7,22 @@ namespace Exercise.ObjectOriented
 {
     public class Repository<T>
     {
-        public Repository(IEnumerable<T> items)
+        public Repository(List<T> items)
         {
-            this.items = items.ToList();
+            this.items = items;
         }
         List<T> items;
         public IEnumerable<T> Items => items;
 
-        public IEnumerable<T> Find(Specification<T> specification)
+        public List<T> Find(Specification<T> specification)
         {
-            return items.Where(specification.IsSatisfiedBy)
-                .ToList();
+            var result = new List<T>();
+            foreach (var item in items)
+            {
+                if (specification.IsSatisfiedBy(item))
+                    result.Add(item);
+            }
+            return result;
         }
     }
 }
